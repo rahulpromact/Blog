@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace RegistrationAndLogging2.Models
 {
-    public class Autofac
+    public class Autofac1
     {
         public static void start()
         {

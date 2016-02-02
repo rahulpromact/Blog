@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationAndLogging2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace RegistrationAndLogging2
     {
         protected void Application_Start()
         {
+            Autofac1.start();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
