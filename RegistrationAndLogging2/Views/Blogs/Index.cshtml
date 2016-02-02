@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<RegistrationAndLogging2.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Blogtitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.Entry)
+    {
+        foreach (var a in item)
+        {
+            if (a.UserId == User.Identity.GetUserId())
+            {
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Blogtitle)*@
+                        @a.Blogtitle.ToString()
+                    </td>
+                    <td>
+                        @*Html.DisplayFor(modelItem => item.BlogDescription)*@
+                        @a.BlogDescription.ToString()
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.BlogDate)*@
+                        @a.BlogDate.ToString()
+                    </td>
+                    <td>
+                        @a.User.UserName.ToString();
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = a.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = a.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = a.Id })
+                    </td>
+                </tr>
+            }
+            else
+            { 
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Blogtitle)*@
+                    @a.Blogtitle.ToString()
+                </td>
+                <td>
+                    @*Html.DisplayFor(modelItem => item.BlogDescription)*@
+                    @a.BlogDescription.ToString()
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.BlogDate)*@
+                    @a.BlogDate.ToString()
+                </td>
+                <td>
+                    @a.User.UserName.ToString();
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = a.Id })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+    }
+    }
+
+</table>
